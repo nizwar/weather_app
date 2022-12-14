@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="generator" content="made with love by dartdoc 6.1.5">
+  <meta name="description" content="weather API docs, for the Dart programming language.">
+  <title>weather - Dart API docs</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="static-assets/github.css?v1">
+  <link rel="stylesheet" href="static-assets/styles.css?v1">
+  <link rel="icon" href="static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li class="self-crumb">weather package</li>
+  </ol>
+  <div class="self-name">weather</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span class="material-symbols-outlined">
+        brightness_4
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+  <div id="dartdoc-main-content" class="main-content">
+      
+<section class="desc markdown">
+  <h1 id="weather-app">Weather APP</h1>
+<p>This is a simple weather app that shows weather information based on user's location. This app is built using Flutter and Dart.</p>
+<p>The app is built within under 24 hours, so it's not that perfect 😊</p>
+<p><a href="https://github.com/nizwar/weather_app/releases">Click here to download the app</a></p>
+<h2 id="features">Features</h2>
+<ul>
+<li>Show weather information based on user's location</li>
+<li>Show weather information based on user's selected location</li>
+<li>Adaptive theme based on weather condition and time</li>
+</ul>
+<h2 id="environment-setup">Environment Setup</h2>
+<p>Create <code>environment.dart</code> inside <code>lib/core/resources/environment.dart</code> and put following environment variables to run the project</p>
+<pre class="language-dart"><code class="language-dart">    const String endpoint = "https://api.openweathermap.org/data/2.5/";
+    const String weatherKey = "";
+    const String weatherIcon = "https://openweathermap.org/img/wn/";
+    const String googleApiKey = "";
+    const List&lt;double&gt; defaultLocation = [-5, 120]; //INDONESIA
+</code></pre>
+<h2 id="setup-api">Setup API</h2>
+<p>Get your keys from following sites</p>
+<ul>
+<li>Weather API : <a href="https://openweathermap.org/api">openweathermap</a></li>
+<li>Google Maps API : <a href="https://developers.google.com/maps/documentation">google</a></li>
+</ul>
+<h2 id="screenshot">Screenshot</h2><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxkj9BxuR0XWkDTMwVwG0kbX3r5kUCAqm9bRhd7r4v8OarCuenkERSSViYtYa6Fzbp3sVhJQVLMYBH19SovZvmcNSYXwBAnqTDKV34EwMdbXRNgVY4DloLVSUjdddgdnIK5Aou2sbLdS3RvBMeiYyHOp7JR45mYyaIjYw-Gl9sFXZwSrihXp21E2Q4/s1600/Screenshot_1670951026.png">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhxkj9BxuR0XWkDTMwVwG0kbX3r5kUCAqm9bRhd7r4v8OarCuenkERSSViYtYa6Fzbp3sVhJQVLMYBH19SovZvmcNSYXwBAnqTDKV34EwMdbXRNgVY4DloLVSUjdddgdnIK5Aou2sbLdS3RvBMeiYyHOp7JR45mYyaIjYw-Gl9sFXZwSrihXp21E2Q4/s300/Screenshot_1670951026.png" alt="Sunrise Adaptive UI"></a>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWmZWicfzyKeS8sVObJL-69aF9tbDm5xhxQVM1cFZ2ysOcKhKtMc6qly-k68QQG3ZgVTrAn71iUA6188rYCK61eL4l4IUgLNR2nHgZdhLHmdFXXjfguWmTpfq8_5SZdGO_piK1koA0_hn-WeQP_K9F9jwwKT9PxmXiDQXKMnByoDJVZcEbOlUTtpY9/s1600/Screenshot_1670951262.png">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWmZWicfzyKeS8sVObJL-69aF9tbDm5xhxQVM1cFZ2ysOcKhKtMc6qly-k68QQG3ZgVTrAn71iUA6188rYCK61eL4l4IUgLNR2nHgZdhLHmdFXXjfguWmTpfq8_5SZdGO_piK1koA0_hn-WeQP_K9F9jwwKT9PxmXiDQXKMnByoDJVZcEbOlUTtpY9/s300/Screenshot_1670951262.png" alt="Midnight Adaptive UI"></a>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjiOSe0ikmYXlPkmVXZkmAXrVeMh8ZykIgHpcLs8qFncZsdYChG_Pv2kkDiRMaA4RPNvAjSFi7uI-P7eP-Qf1QvJnj6IECiisuAK30IOb1ciswoymFv4Z4ya7fr53U0rJYs7QZB1UTyYNIyloGnH5NEp_DPcTn2TWblDhu9GwHJnhnh1c9kPVA9O4LA/s1600/Screenshot_1670953652.png">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjiOSe0ikmYXlPkmVXZkmAXrVeMh8ZykIgHpcLs8qFncZsdYChG_Pv2kkDiRMaA4RPNvAjSFi7uI-P7eP-Qf1QvJnj6IECiisuAK30IOb1ciswoymFv4Z4ya7fr53U0rJYs7QZB1UTyYNIyloGnH5NEp_DPcTn2TWblDhu9GwHJnhnh1c9kPVA9O4LA/s300/Screenshot_1670953652.png" alt="Sunset Adaptive UI"></a>
+<a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgongZCNATvyjD-PEvPGcELkx-Ud2z_oYaiTL7xhrWCoZU5WCSwIOsvah3ITyr4SswdPYtoZv8i4uhLbCFtt860S9TUfdm6WsT61kUmcCdgXc8Jz4bnvhCxptIeYdv85OaVfgptzKBaSXVRivck4EyX5jvV1JAB5LNE339N_Rmonym0uT85Dw83ohen/s1600/Screenshot_1670953969.png">
+<img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgongZCNATvyjD-PEvPGcELkx-Ud2z_oYaiTL7xhrWCoZU5WCSwIOsvah3ITyr4SswdPYtoZv8i4uhLbCFtt860S9TUfdm6WsT61kUmcCdgXc8Jz4bnvhCxptIeYdv85OaVfgptzKBaSXVRivck4EyX5jvV1JAB5LNE339N_Rmonym0uT85Dw83ohen/s300/Screenshot_1670953969.png" alt="Morning Adaptive UI"></a>
+<h2 id="support-me">Support Me</h2>
+<p>If you like this project, please give me a star ⭐️ and follow me on GitHub</p>
+</section>
+
+
+      <section class="summary">
+          <h2>Libraries</h2>
+        <dl>
+          <dt id="animated_background">
+  <span class="name"><a href="ui_components_animated_background/ui_components_animated_background-library.html">animated_background</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="colors">
+  <span class="name"><a href="core_resources_colors/core_resources_colors-library.html">colors</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="custom_card">
+  <span class="name"><a href="ui_components_custom_card/ui_components_custom_card-library.html">custom_card</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="custom_divider">
+  <span class="name"><a href="ui_components_custom_divider/ui_components_custom_divider-library.html">custom_divider</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="custom_image">
+  <span class="name"><a href="ui_components_custom_image/ui_components_custom_image-library.html">custom_image</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="custom_shimmer">
+  <span class="name"><a href="ui_components_custom_shimmer/ui_components_custom_shimmer-library.html">custom_shimmer</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="environment">
+  <span class="name"><a href="core_resources_environment/core_resources_environment-library.html">environment</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="extensions">
+  <span class="name"><a href="core_utils_extensions/core_utils_extensions-library.html">extensions</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="http_connection">
+  <span class="name"><a href="core_https_http_connection/core_https_http_connection-library.html">http_connection</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="logger">
+  <span class="name"><a href="core_utils_logger/core_utils_logger-library.html">logger</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="main">
+  <span class="name"><a href="main/main-library.html">main</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="main_screen">
+  <span class="name"><a href="ui_screens_main_screen/ui_screens_main_screen-library.html">main_screen</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="model">
+  <span class="name"><a href="core_models_model/core_models_model-library.html">model</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="navigations">
+  <span class="name"><a href="core_utils_navigations/core_utils_navigations-library.html">navigations</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="open_weather">
+  <span class="name"><a href="core_models_open_weather/core_models_open_weather-library.html">open_weather</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="preferences">
+  <span class="name"><a href="core_utils_preferences/core_utils_preferences-library.html">preferences</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="search_location_screen">
+  <span class="name"><a href="ui_screens_search_location_screen/ui_screens_search_location_screen-library.html">search_location_screen</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="splash_screen">
+  <span class="name"><a href="ui_screens_splash_screen/ui_screens_splash_screen-library.html">splash_screen</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="themes">
+  <span class="name"><a href="core_resources_themes/core_resources_themes-library.html">themes</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="utils">
+  <span class="name"><a href="core_utils_utils/core_utils_utils-library.html">utils</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="weather_http">
+  <span class="name"><a href="core_https_weather_http/core_https_weather_http-library.html">weather_http</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="weather_provider">
+  <span class="name"><a href="core_providers_globals_weather_provider/core_providers_globals_weather_provider-library.html">weather_provider</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="weather_screen">
+  <span class="name"><a href="ui_screens_weather_screen/ui_screens_weather_screen-library.html">weather_screen</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+        </dl>
+      </section>
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li class="self-crumb">weather package</li>
+</ol>
+
+
+    <h5 class="hidden-xs"><span class="package-name">weather</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="ui_components_animated_background/ui_components_animated_background-library.html">animated_background</a></li>
+      <li><a href="core_resources_colors/core_resources_colors-library.html">colors</a></li>
+      <li><a href="ui_components_custom_card/ui_components_custom_card-library.html">custom_card</a></li>
+      <li><a href="ui_components_custom_divider/ui_components_custom_divider-library.html">custom_divider</a></li>
+      <li><a href="ui_components_custom_image/ui_components_custom_image-library.html">custom_image</a></li>
+      <li><a href="ui_components_custom_shimmer/ui_components_custom_shimmer-library.html">custom_shimmer</a></li>
+      <li><a href="core_resources_environment/core_resources_environment-library.html">environment</a></li>
+      <li><a href="core_utils_extensions/core_utils_extensions-library.html">extensions</a></li>
+      <li><a href="core_https_http_connection/core_https_http_connection-library.html">http_connection</a></li>
+      <li><a href="core_utils_logger/core_utils_logger-library.html">logger</a></li>
+      <li><a href="main/main-library.html">main</a></li>
+      <li><a href="ui_screens_main_screen/ui_screens_main_screen-library.html">main_screen</a></li>
+      <li><a href="core_models_model/core_models_model-library.html">model</a></li>
+      <li><a href="core_utils_navigations/core_utils_navigations-library.html">navigations</a></li>
+      <li><a href="core_models_open_weather/core_models_open_weather-library.html">open_weather</a></li>
+      <li><a href="core_utils_preferences/core_utils_preferences-library.html">preferences</a></li>
+      <li><a href="ui_screens_search_location_screen/ui_screens_search_location_screen-library.html">search_location_screen</a></li>
+      <li><a href="ui_screens_splash_screen/ui_screens_splash_screen-library.html">splash_screen</a></li>
+      <li><a href="core_resources_themes/core_resources_themes-library.html">themes</a></li>
+      <li><a href="core_utils_utils/core_utils_utils-library.html">utils</a></li>
+      <li><a href="core_https_weather_http/core_https_weather_http-library.html">weather_http</a></li>
+      <li><a href="core_providers_globals_weather_provider/core_providers_globals_weather_provider-library.html">weather_provider</a></li>
+      <li><a href="ui_screens_weather_screen/ui_screens_weather_screen-library.html">weather_screen</a></li>
+</ol>
+
+  </div>
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div>
+
+</main>
+
+<footer>
+  <span class="no-break">
+    weather
+      1.0.1+1
+  </span>
+
+  
+</footer>
+
+
+
+<script src="static-assets/highlight.pack.js?v1"></script>
+<script src="static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+

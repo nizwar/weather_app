@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the weatherType property from the WeatherTypeModel extension, for the Dart programming language.">
+  <title>weatherType property - WeatherTypeModel extension - extensions library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+
+  
+</head>
+
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">weather</a></li>
+    <li><a href="../../core_utils_extensions/core_utils_extensions-library.html">extensions</a></li>
+    <li><a href="../../core_utils_extensions/WeatherTypeModel.html">WeatherTypeModel</a></li>
+    <li class="self-crumb">weatherType property</li>
+  </ol>
+  <div class="self-name">weatherType</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span class="material-symbols-outlined">
+        brightness_4
+      </span>
+    </label>
+  </div>
+</header>
+<main>
+
+  <div id="dartdoc-main-content" class="main-content">
+      <div>
+<h1><span class="kind-property">weatherType</span> property 
+    <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
+</h1></div>
+
+
+        
+<section id="getter">
+
+<section class="multi-line-signature">
+  
+  <span class="returntype">WeatherType</span>
+  <span class="name ">weatherType</span>
+  
+
+</section>
+
+
+
+
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">WeatherType get weatherType {
+  &#47;&#47; Thunder
+  if (id &gt;= 200 &amp;&amp; id &lt; 300) return WeatherType.thunder;
+  &#47;&#47; Drizzle
+  if (id &gt;= 300 &amp;&amp; id &lt; 400) return WeatherType.lightRainy;
+  switch (id) {
+    &#47;&#47; Raining
+    case 500:
+      return WeatherType.lightRainy;
+    case 501:
+      return WeatherType.middleRainy;
+    case 502:
+      return WeatherType.middleRainy;
+    case 503:
+      return WeatherType.heavyRainy;
+    case 504:
+      return WeatherType.heavyRainy;
+    case 511:
+      return WeatherType.middleRainy;
+    case 520:
+      return WeatherType.lightRainy;
+    case 521:
+      return WeatherType.middleRainy;
+    case 522:
+      return WeatherType.middleRainy;
+    case 531:
+      return WeatherType.middleRainy;
+
+    &#47;&#47; Snowing
+    case 600:
+      return WeatherType.lightSnow;
+    case 601:
+      return WeatherType.middleSnow;
+    case 602:
+      return WeatherType.heavySnow;
+    case 611:
+      return WeatherType.middleSnow;
+    case 612:
+      return WeatherType.lightSnow;
+    case 613:
+      return WeatherType.middleSnow;
+    case 615:
+      return WeatherType.lightSnow;
+    case 616:
+      return WeatherType.middleSnow;
+    case 620:
+      return WeatherType.middleSnow;
+    case 621:
+      return WeatherType.heavySnow;
+    case 622:
+      return WeatherType.heavySnow;
+
+    &#47;&#47;Atmosphere
+    case 701:
+      return WeatherType.foggy;
+    case 711:
+      return WeatherType.foggy;
+    case 721:
+      return WeatherType.hazy;
+    case 731:
+      return WeatherType.dusty;
+    case 741:
+      return WeatherType.foggy;
+    case 751:
+      return WeatherType.dusty;
+    case 761:
+      return WeatherType.dusty;
+    case 762:
+      return WeatherType.foggy;
+    case 771:
+      return WeatherType.thunder;
+    case 781:
+      return WeatherType.thunder;
+
+    &#47;&#47;Clouds
+    case 800:
+      return WeatherType.sunny;
+    case 801:
+      return WeatherType.sunny;
+    case 802:
+      return WeatherType.cloudy;
+    case 803:
+      return WeatherType.overcast;
+    case 804:
+      return WeatherType.overcast;
+  }
+
+  return WeatherType.sunny;
+}</code></pre>
+</section>
+
+</section>
+
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+  <li><a href="../../index.html">weather</a></li>
+  <li><a href="../../core_utils_extensions/core_utils_extensions-library.html">extensions</a></li>
+  <li><a href="../../core_utils_extensions/WeatherTypeModel.html">WeatherTypeModel</a></li>
+  <li class="self-crumb">weatherType property</li>
+</ol>
+
+
+    <h5>WeatherTypeModel extension</h5>
+    <ol>
+
+
+
+
+        <li class="section-title"> <a href="../../core_utils_extensions/WeatherTypeModel.html#instance-properties">Properties</a></li>
+          <li><a href="../../core_utils_extensions/WeatherTypeModel/weatherType.html">weatherType</a></li>
+
+
+
+
+
+</ol>
+
+  </div><!--/.sidebar-offcanvas-->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+
+</main>
+
+<footer>
+  <span class="no-break">
+    weather
+      1.0.1+1
+  </span>
+
+  
+</footer>
+
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+
+
+</body>
+
+</html>
+

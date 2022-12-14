@@ -58,70 +58,71 @@ class _WeatherScreenState extends State<WeatherScreen> {
                         ),
                       ),
                       Expanded(
-                        child: NestedScrollView(
-                          headerSliverBuilder: (context, innerBoxIsScrolled) => [_weatherDetail(context, openWeather)],
-                          body: GridView(
-                              padding: const EdgeInsets.only(left: 10, right: 10, bottom: 20),
-                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                childAspectRatio: 1.5,
-                                mainAxisSpacing: 10,
-                                crossAxisSpacing: 10,
-                              ),
-                              children: [
-                                _boxItemWidget(
-                                  Icons.wind_power,
-                                  "Wind",
-                                  "${openWeather.wind.speed.toStringAsFixed(1)} m/s",
-                                  "Wind Deg : ${openWeather.wind.deg}°",
-                                ),
-                                _boxItemWidget(
-                                  Icons.sunny_snowing,
-                                  "Sunrise",
-                                  DateFormat.Hm().format(unixToDateTime(openWeather.sys.sunrise) ?? DateTime.now()),
-                                  "Sunset will be at : ${DateFormat.Hm().format(unixToDateTime(openWeather.sys.sunset) ?? DateTime.now())}",
-                                ),
-                                _boxItemWidget(
-                                  Icons.thermostat,
-                                  "Temperature",
-                                  "${openWeather.main.temp.toStringAsFixed(0)}°C",
-                                  "Feels like : ${openWeather.main.feelsLike.toStringAsFixed(0)}°C",
-                                ),
-                                _boxItemWidget(
-                                  Icons.water_drop,
-                                  "Humidity",
-                                  "${openWeather.main.humidity}%",
-                                  "Pressure : ${openWeather.main.pressure} hPa",
-                                ),
-                                _boxItemWidget(
-                                  Icons.cloud,
-                                  "Clouds",
-                                  "${openWeather.clouds.all}%",
-                                  "Visibility : ${openWeather.visibility / 1000} km",
-                                ),
-
-                                //Conditional rain and snow
-                                if (openWeather.rain != null)
+                        child: ListView(
+                          physics: const BouncingScrollPhysics(),
+                          padding: const EdgeInsets.only(left: 10, right: 10, bottom: 20),
+                          children: [
+                            _weatherDetail(context, openWeather),
+                            const ColumnDivider(space: 20),
+                            GridView(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 1.5, mainAxisSpacing: 10, crossAxisSpacing: 10),
+                                children: [
                                   _boxItemWidget(
-                                    Icons.water,
-                                    "Rain",
-                                    "${openWeather.rain?.the1H ?? 0} mm",
+                                    Icons.wind_power,
+                                    "Wind",
+                                    "${openWeather.wind.speed.toStringAsFixed(1)} m/s",
+                                    "Wind Deg : ${openWeather.wind.deg}°",
                                   ),
-                                if (openWeather.snow != null)
                                   _boxItemWidget(
-                                    Icons.snowing,
-                                    "Snow",
-                                    "${openWeather.snow?.the1H ?? 0} mm",
+                                    Icons.sunny_snowing,
+                                    "Sunrise",
+                                    DateFormat.Hm().format(unixToDateTime(openWeather.sys.sunrise) ?? DateTime.now()),
+                                    "Sunset will be at : ${DateFormat.Hm().format(unixToDateTime(openWeather.sys.sunset) ?? DateTime.now())}",
+                                  ),
+                                  _boxItemWidget(
+                                    Icons.thermostat,
+                                    "Temperature",
+                                    "${openWeather.main.temp.toStringAsFixed(0)}°C",
+                                    "Feels like : ${openWeather.main.feelsLike.toStringAsFixed(0)}°C",
+                                  ),
+                                  _boxItemWidget(
+                                    Icons.water_drop,
+                                    "Humidity",
+                                    "${openWeather.main.humidity}%",
+                                    "Pressure : ${openWeather.main.pressure} hPa",
+                                  ),
+                                  _boxItemWidget(
+                                    Icons.cloud,
+                                    "Clouds",
+                                    "${openWeather.clouds.all}%",
+                                    "Visibility : ${openWeather.visibility / 1000} km",
                                   ),
 
-                                //Sea level
-                                _boxItemWidget(
-                                  Icons.water_outlined,
-                                  "Sea Level",
-                                  "${openWeather.main.seaLevel} m",
-                                  "Ground Level : ${openWeather.main.grndLevel} m",
-                                ),
-                              ]),
+                                  //Conditional rain and snow
+                                  if (openWeather.rain != null)
+                                    _boxItemWidget(
+                                      Icons.water,
+                                      "Rain",
+                                      "${openWeather.rain?.the1H ?? 0} mm",
+                                    ),
+                                  if (openWeather.snow != null)
+                                    _boxItemWidget(
+                                      Icons.snowing,
+                                      "Snow",
+                                      "${openWeather.snow?.the1H ?? 0} mm",
+                                    ),
+
+                                  //Sea level
+                                  _boxItemWidget(
+                                    Icons.water_outlined,
+                                    "Sea Level",
+                                    "${openWeather.main.seaLevel} m",
+                                    "Ground Level : ${openWeather.main.grndLevel} m",
+                                  ),
+                                ])
+                          ],
                         ),
                       ),
                     ],
@@ -160,28 +161,15 @@ class _WeatherScreenState extends State<WeatherScreen> {
   }
 
   Widget _weatherDetail(BuildContext context, OpenWeather openWeather) {
-    return SliverAppBar(
-      centerTitle: true,
-      floating: false,
-      pinned: true,
-      elevation: 0,
-      backgroundColor: Colors.transparent,
-      expandedHeight: 150,
-      toolbarHeight: 0,
-      flexibleSpace: FlexibleSpaceBar(
-        collapseMode: CollapseMode.none,
-        background: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Column(children: [
-            Text("${openWeather.main.temp.toStringAsFixed(0)}°", style: Theme.of(context).textTheme.headline2!.copyWith(color: Colors.white)),
-            const ColumnDivider(space: 3),
-            Text(openWeather.weather.first.main, style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
-            const ColumnDivider(space: 5),
-            Text("T:${openWeather.main.tempMax.toStringAsFixed(0)}° R:${openWeather.main.tempMin.toStringAsFixed(0)}°", style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white)),
-          ]),
-        ),
-        centerTitle: true,
-      ),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      child: Column(children: [
+        Text("${openWeather.main.temp.toStringAsFixed(0)}°", style: Theme.of(context).textTheme.headline2!.copyWith(color: Colors.white)),
+        const ColumnDivider(space: 3),
+        Text(openWeather.weather.first.main, style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+        const ColumnDivider(space: 5),
+        Text("T:${openWeather.main.tempMax.toStringAsFixed(0)}° R:${openWeather.main.tempMin.toStringAsFixed(0)}°", style: Theme.of(context).textTheme.bodyText1!.copyWith(color: Colors.white)),
+      ]),
     );
   }
 

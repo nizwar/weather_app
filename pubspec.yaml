@@ -1,7 +1,7 @@
 name: weather
 description: Weather app CCN Task
 publish_to: 'none'
-version: 1.0.0+1
+version: 1.0.1+1
 
 environment:
   sdk: '>=2.18.5 <3.0.0'
